@@ -1,0 +1,15 @@
+<!--
+ - Created by rubenhal on 4/23/2019.
+ -->
+
+<aura:component description="BoatSearch" implements="flexipage:availableForAllPageTypes">
+
+    <lightning:card title="Find a Boat" class="boatApp">
+        <c:BoatSearchForm></c:BoatSearchForm>
+    </lightning:card>
+
+    <lightning:card title="Matching Boats" class="boatApp">
+        <c:BoatSearchResults></c:BoatSearchResults>
+    </lightning:card>
+
+</aura:component>

@@ -1,0 +1,26 @@
+<!--
+ - Created by rubenhal on 4/23/2019.
+ -->
+
+<aura:component description="BoatSearchForm" controller="BoatSearchFormController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="boatTypes" type="BoatType__c[]" />
+    <aura:attribute name="selectedBoatType" type="String" default=""/>
+    <aura:attribute name="createRecordContext" type="Boolean" default="False"/>
+    <lightning:layout verticalAlign="end" horizontalAlign="center">
+        <lightning:layoutItem size="6" flexibility="auto" padding="horizontal-medium">
+            <lightning:select class="slds-size--1-of-4 slds-float--right" label="Find a boat" variant="label-hidden" value="{!v.selectedBoatType}">>
+                <option value="">All types</option>
+                <aura:iteration items="{!v.boatTypes}" var="boatType">
+                    <option value="{!boatType.Id}"> {!boatType.Name}</option>
+                </aura:iteration>
+            </lightning:select>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="6" flexibility="auto" padding="horizontal-medium">
+            <lightning:button variant="brand" label="Search" title="Search" onclick="{! c.searchBoatsByType }"/>
+            <aura:if isTrue='{!v.createRecordContext}'>
+                <lightning:button label="New" title="New" onclick="{! c.newBoat }"/>
+            </aura:if>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

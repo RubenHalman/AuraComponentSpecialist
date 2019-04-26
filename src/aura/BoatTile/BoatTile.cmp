@@ -1,0 +1,10 @@
+<aura:component description="BoatTile">
+    <aura:attribute type="Boat__c" name="boatRecord" access="public"/>
+        <lightning:button class="tile">
+            <div class="innertile" style="{!'background-image:url(\'' + v.boatRecord.Picture__c + '\')'}">
+                <div class="lower-third">
+                    <h1 class="slds-truncate">{!v.boatRecord.Contact__r.Name}</h1>
+                </div>
+            </div>
+        </lightning:button>
+</aura:component>

@@ -1,0 +1,22 @@
+<aura:component access="global" controller="BoatSearchResults">
+    <aura:attribute name="boats" type="Boat__c[]"/>
+    <aura:attribute name="recordError" type="String" default="No boats found"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <lightning:layout horizontalAlign="spread" multipleRows="true">
+
+        <aura:if isTrue="{! not(empty(v.boats))}">
+            <aura:iteration items="{!v.boats}" var="boat">
+                <lightning:layoutItem flexibility="grow" size="4" mediumDeviceSize="6"
+                                      largeDeviceSize="3" padding="around-small">
+                    <c:BoatTile boatRecord="{!boat}"></c:BoatTile>
+                </lightning:layoutItem>
+            </aura:iteration>
+            <aura:set attribute="else">
+                <div class="slds-align_absolute-center">
+                    <p>{!recordError}</p>
+                </div>
+            </aura:set>
+        </aura:if>
+    </lightning:layout>
+</aura:component>
